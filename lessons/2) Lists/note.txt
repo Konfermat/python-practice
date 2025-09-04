@@ -1,0 +1,3 @@
+для задания сделай через метод choise
+random.choice(l1)
+метод split();
