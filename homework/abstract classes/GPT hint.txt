@@ -1,0 +1,158 @@
+from abc import ABC, abstractmethod
+
+
+# --- Базовый абстрактный класс ---
+class Employee(ABC):
+    def __init__(self, name: str, role: str):
+        self.name = name
+        self.role = role
+        self.completed_tasks = 0  # количество выполненных задач
+
+    @abstractmethod
+    def work(self, task):
+        pass
+
+    # --- Перегрузка операторов сравнения по количеству выполненных задач ---
+    def __eq__(self, other):
+        return self.completed_tasks == other.completed_tasks
+
+    def __lt__(self, other):
+        return self.completed_tasks < other.completed_tasks
+
+    def __gt__(self, other):
+        return self.completed_tasks > other.completed_tasks
+
+    def __str__(self):
+        return f"{self.role}: {self.name} (Выполнено задач: {self.completed_tasks})"
+
+
+# --- Подклассы сотрудников ---
+class Developer(Employee):
+    def __init__(self, name: str):
+        super().__init__(name, "Developer")
+
+    def work(self, task):
+        print(f"{self.name} пишет код для задачи: {task.description}")
+        self.completed_tasks += 1
+
+
+class Tester(Employee):
+    def __init__(self, name: str):
+        super().__init__(name, "Tester")
+
+    def work(self, task):
+        print(f"{self.name} тестирует задачу: {task.description}")
+        self.completed_tasks += 1
+
+
+class Manager(Employee):
+    def __init__(self, name: str):
+        super().__init__(name, "Manager")
+
+    def work(self, task=None):
+        print(f"{self.name} управляет командой и распределяет задачи")
+        self.completed_tasks += 1
+
+
+# --- Множественное наследование ---
+class LeadDeveloper(Developer, Manager):
+    def __init__(self, name: str):
+        super().__init__(name)
+        self.role = "Lead Developer"
+
+    def work(self, task=None):
+        # Может как писать код, так и управлять
+        if task:
+            print(f"{self.name} пишет код и управляет задачей: {task.description}")
+        else:
+            print(f"{self.name} управляет командой и пишет код")
+        self.completed_tasks += 1
+
+
+# --- Класс задачи ---
+class Task:
+    def __init__(self, description: str, employee: Employee = None):
+        self.description = description
+        self.employee = employee
+        self.is_done = False
+
+    def assign_to(self, employee: Employee):
+        self.employee = employee
+        print(f"Задача '{self.description}' назначена {employee.name}")
+
+    def complete(self):
+        if self.employee:
+            self.employee.work(self)
+            self.is_done = True
+        else:
+            print(f"Задача '{self.description}' не имеет исполнителя!")
+
+
+# --- Класс проекта ---
+class Project:
+    def __init__(self, name: str):
+        self.name = name
+        self.tasks = []
+        self.employees = []
+
+    def add_task(self, task: Task):
+        self.tasks.append(task)
+
+    def add_employee(self, employee: Employee):
+        self.employees.append(employee)
+
+    def show_status(self):
+        print(f"\n--- Проект: {self.name} ---")
+        print("Сотрудники:")
+        for emp in self.employees:
+            print(emp)
+        print("Задачи:")
+        for task in self.tasks:
+            status = "Выполнена" if task.is_done else "В процессе"
+            print(f"- {task.description} [{status}]")
+
+
+# --- Демонстрация работы ---
+if __name__ == "__main__":
+    # Создаем сотрудников
+    dev1 = Developer("Иван")
+    tester1 = Tester("Мария")
+    manager1 = Manager("Алексей")
+    lead_dev = LeadDeveloper("Сергей")
+
+    # Создаем проект
+    project = Project("CRM-система")
+    project.add_employee(dev1)
+    project.add_employee(tester1)
+    project.add_employee(manager1)
+    project.add_employee(lead_dev)
+
+    # Создаем задачи
+    task1 = Task("Сделать backend API")
+    task2 = Task("Протестировать API")
+    task3 = Task("Организовать митинг")
+    task4 = Task("Реализовать frontend")
+
+    project.add_task(task1)
+    project.add_task(task2)
+    project.add_task(task3)
+    project.add_task(task4)
+
+    # Назначаем и выполняем задачи
+    task1.assign_to(dev1)
+    task2.assign_to(tester1)
+    task3.assign_to(manager1)
+    task4.assign_to(lead_dev)
+
+    task1.complete()
+    task2.complete()
+    task3.complete()
+    task4.complete()
+
+    # Проверяем состояние проекта
+    project.show_status()
+
+    # Сравнение сотрудников
+    print("\nСравнение сотрудников:")
+    print(f"{dev1.name} == {tester1.name}? {dev1 == tester1}")
+    print(f"{lead_dev.name} > {manager1.name}? {lead_dev > manager1}")
