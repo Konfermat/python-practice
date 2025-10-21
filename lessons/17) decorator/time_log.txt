@@ -1,0 +1,3 @@
+Func: fast, Duration: 0.010637044906616211, Warning message: .
+Func: slow, Duration: 1.5004913806915283, Warning message: ВНИМАНИЕ! слишком долго; 1.5004913806915283.
+Func: fast, Duration: 0.011073112487792969, Func: slow, Duration: 1.50071120262146, ВНИМАНИЕ! слишком долго; 1.50071120262146Func: fastDuration: 0.010283470153808594Func: slowDuration: 1.5011329650878906ВНИМАНИЕ! слишком долго; 1.5011329650878906Func: fastDuration: 0.01115274429321289Func: slowDuration: 1.5002586841583252ВНИМАНИЕ! слишком долго; 1.5002586841583252
