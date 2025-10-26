@@ -1,5 +1,5 @@
 def merge_intervals(intervals):
-    #сортируем по времени начала
+    # сортируем по времени начала
     intervals.sort(key=lambda x: x[0])
 
     merged = [intervals[0]]
@@ -12,6 +12,7 @@ def merge_intervals(intervals):
             merged.append(current)
 
     return merged
+
 
 def update_schedule(schedule, new_interval):
     schedule.append(new_interval)
