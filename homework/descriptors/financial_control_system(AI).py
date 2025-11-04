@@ -1,6 +1,5 @@
 from datetime import datetime
 
-
 # Базовый класс для всех финансовых дескрипторов
 class FinancialDescriptor:
     def __init__(self, name, min_value, max_value):
