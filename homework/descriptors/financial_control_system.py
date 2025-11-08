@@ -84,6 +84,4 @@ print('Курс вылюты относительно рубля')
 print('конвертирую 2 доллара в рубли')
 print()
 
-for key, value in currency.items():
-    print(key, value)
-
+print(currency['USD'])
