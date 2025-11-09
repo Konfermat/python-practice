@@ -1,4 +1,4 @@
-def roman_to_int(roman: str) -> int:
+def roman_to_arab(roman: str) -> int:
     values = {
         'I': 1,
         'V': 5,
@@ -9,24 +9,34 @@ def roman_to_int(roman: str) -> int:
         'M': 1000
     }
 
-    total = 0
-    prev_value = 0
+    result = 0
+    previous_number = 0
+    almost_arab = [values[i] for i in list(roman)][::-1]
 
-    # Идём справа налево
-    for symbol in reversed(roman):
-        value = values[symbol]
-        if value < prev_value:
-            total -= value
+    for char in almost_arab:
+        if previous_number == 0:
+            previous_number = char
+            result += previous_number
+            continue
+        elif previous_number > char:
+            result -= char
+            previous_number = char
+            continue
+        elif previous_number <= char:
+            result += char
+            previous_number = char
+            continue
         else:
-            total += value
-        prev_value = value
+            print('Unknown error')
+            break
 
-    return total
+    return result
 
+print(roman_to_arab('MCMLXXXIV'))
+# 1984
 
-# ======== Примеры ========
+print(roman_to_arab('MCCXXXIV'))
+# 1234
 
-if __name__ == "__main__":
-    examples = ["MCMLXXXIV", "MCCXXXIV", "MCMXC"]
-    for r in examples:
-        print(f"{r} → {roman_to_int(r)}")
+print(roman_to_arab('MCMXC'))
+# 1990
