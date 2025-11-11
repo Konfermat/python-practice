@@ -1,5 +1,4 @@
 import sys
-#sys.path.append('C:/My Work Space/Prog tinkering/python_practice/HW/testing')
 sys.path.append('')
 import testing
 
