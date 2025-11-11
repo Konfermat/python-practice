@@ -6,12 +6,6 @@ class FinancialDescriptor:
         self.name = name
         self.min_value = min_value
         self.max_value = max_value
-        self.history = []
-        self._add_to_history('Created')
-
-    def _add_to_history(self, action):
-        timestamp = self._get_current_timestamp()
-        self.history.append({'action': action, 'timestamp': timestamp})
 
     def _get_current_timestamp(self):
         return datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -19,7 +13,6 @@ class FinancialDescriptor:
     def validate_value(self, value):
         if value < self.min_value or value > self.max_value:
             raise ValueError(f"Value must be between {self.min_value} and {self.max_value}")
-
 
 # Класс для баланса (наследуется от FinancialDescriptor)
 class BalanceDescriptor(FinancialDescriptor):

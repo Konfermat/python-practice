@@ -1,5 +1,6 @@
 from datetime import datetime
 
+# Базовый класс
 class FinancialDescriptor:
     def __init__(self, name = None, min_value = 0, max_value = 0):
         self.name = name
@@ -7,10 +8,16 @@ class FinancialDescriptor:
         self.max_value = max_value
         self.history = []
 
-    def add_history(self, action):
-        time_stamp = datetime.now().strftime('%d-%m-%Y %H:%M:%S')
-        self.history.append(f'Действие: {action} выполнено: {time_stamp}')
+    @staticmethod
+    def time_stamp():
+        return datetime.now().strftime('%d-%m-%Y %H:%M:%S')
 
+    def add_history(self, action):
+        self.history.append(f'Действие: {action} выполнено: {FinancialDescriptor.time_stamp()}')
+
+class BalanceDescriptor:
+    def __init(self, name = None, min_value = 0 , max_value = 0, ):
+        pass
 
 
 class FinancialAccount:
@@ -67,21 +74,3 @@ class FinancialAccount:
 
 
 
-print(datetime.now().strftime('%d-%m-%Y %H:%M:%S'))
-a = FinancialAccount()
-print(a.age_days)
-a.age_days = 2
-print(a.age_days)
-
-exchange_rate = 1
-currency = {
-    'USD': 80.8861,
-    'EUR': 93.3848,
-    'CNY': 11.2449,
-    'AED': 22.0248,
-}
-print('Курс вылюты относительно рубля')
-print('конвертирую 2 доллара в рубли')
-print()
-
-print(currency['USD'])

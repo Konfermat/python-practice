@@ -14,3 +14,19 @@ import time
 
 import datetime
 print(datetime.now().strftime('%d-%m-%Y %H:%M:%S'))
+
+
+import time
+from datetime import datetime
+
+# Get the current time as a time object
+current_time_struct = time.localtime() 
+
+# Format the time object into a string
+formatted_time_str = time.strftime("%Y-%m-%d %H:%M:%S", current_time_struct)
+print(f"Formatted time using time.strftime: {formatted_time_str}")
+
+# Alternatively, using datetime for more common use cases:
+now = datetime.now()
+formatted_datetime_str = now.strftime("%Y-%m-%d %H:%M:%S")
+print(f"Formatted time using datetime.strftime: {formatted_datetime_str}")
