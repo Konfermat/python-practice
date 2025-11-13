@@ -1,0 +1,14 @@
+[
+    {
+        "id": "b9d60745-ecbf-4f73-994a-38ed12de4f0f",
+        "username": "Doblayob",
+        "email": "doblayob@yandex.com",
+        "password_hash": "06f4156055ad0560b304b0efb29c9ff0f7be7750f5e0a9c638a51673a97807da"
+    },
+    {
+        "id": "fc6ff0fe-e518-412c-9f3e-e4f71be6a720",
+        "username": "Sam_Obuhov",
+        "email": "sam_obuhov@gmail.com",
+        "password_hash": "06f4156055ad0560b304b0efb29c9ff0f7be7750f5e0a9c638a51673a97807da"
+    }
+]
