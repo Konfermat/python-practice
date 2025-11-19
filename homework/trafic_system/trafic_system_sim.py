@@ -13,7 +13,7 @@ class Road:
         self.vehicles.append(vehicle)
 
 class Vehicle(ABC):
-    def __init__(self, position=0, speed=1, max_speed=4, danger_zone=1):
+    def __init__(self, position=0, speed=0, max_speed=0, danger_zone=0):
         self.position = position
         self.speed = speed
         self.max_speed = max_speed
@@ -33,6 +33,38 @@ class Vehicle(ABC):
         pass
 
 class Car(Vehicle):
+    def __init__(self, position=0, speed=1, max_speed=4, danger_zone=1):
+        super().__init__(position, speed, max_speed, danger_zone)
+        
+    def decide_action(self, vehicles):
+        cars_position = [i.position for i in vehicles if not i.ID == self.ID]
+        slow_case = range(self.position, self.position + self.speed + self.danger_zone)
+        regular_case = range(self.position, self.position + self.speed + self.danger_zone + 1)
+        acceleration_case = range(self.position, self.position + self.speed + self.danger_zone + 2)
+        dz_cars = range(self.position, self.position + self.danger_zone + 1)
+
+        for i in cars_position:
+            if i in dz_cars:
+                # никуда не сдвинусь
+                return
+            elif i in slow_case:
+                self.slow()
+                return
+            elif i in regular_case:
+                self.slow()
+                self.position += self.speed
+                return
+            elif i in acceleration_case:
+                self.position += self.speed
+                return
+
+        # если нет машин поблизости, ускоряемся и едем
+        self.accelerate()
+        self.position += self.speed
+
+class Truck(Vehicle):
+    def __init__(self, position=0, speed=1, max_speed=3, danger_zone=2):
+        super().__init__(position, speed, max_speed, danger_zone)
     def decide_action(self, vehicles):
         cars_position = [i.position for i in vehicles if not i.ID == self.ID]
         slow_case = range(self.position, self.position + self.speed + self.danger_zone)
@@ -67,6 +99,10 @@ class TrafficSystemSimulator:
     def run_cycle(self):
         while self.road.vehicles:
             os.system('cls' if os.name == 'nt' else 'clear')
+            
+            # Каждая машина принимает решение
+            for vehicle in self.road.vehicles:
+                vehicle.decide_action(self.road.vehicles)            
 
             for v in self.road.vehicles:
                 if 0 <= v.position < self.road.length:
@@ -81,20 +117,5 @@ class TrafficSystemSimulator:
                 if 0 <= v.position < self.road.length:
                     self.road_render[v.position] = '▓'
 
-            # Каждая машина принимает решение
-            for vehicle in self.road.vehicles:
-                vehicle.decide_action(self.road.vehicles)
-
             # Удаление машин, вышедших за пределы дороги
             self.road.vehicles = [v for v in self.road.vehicles if v.position < self.road.length]
-
-def main():
-    car1 = Car()
-    car2 = Car(position=2, speed=2)
-    road = Road(length=20)
-    road.add_vehicle(car1)
-    road.add_vehicle(car2)
-    tss = TrafficSystemSimulator(road)
-    tss.run_cycle()
-
-main()
