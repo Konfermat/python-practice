@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Название отеля</th>
+        <th>Город</th>
+        <th>Рейтинг</th>
+        <th>Цена</th>
+        <th>Статус букинга</th>
+    </tr>
+
+    {% for i in hotels %}
+        <tr>
+            <td>{{ i.name }}</td>
+            <td>{{ i.city }}</td>
+            <td>{{ i.rating }}</td>
+            <td>{{ i.price }}</td>
+            <td>{{ i.available }}</td>
+        </tr>
+    {% endfor %}
+
+
+
+</table>
+</body>
+</html>
