@@ -13,6 +13,7 @@
             <p><strong>Время выполнения анализа:</strong> {{ analysis_time }}</p>
             <p><strong>Общее количество запросов:</strong> {{ total_requests }}</p>
             <p><strong>Общий объем переданных данных:</strong> {{ total_data }}</p>
+            <p><strong>Общий объем переданных данных:</strong> {{ total_data }}</p>
         </div>
 <!--ТОП 10 самых посещаемых URL-->
         <h2>ТОП 10 самых посещаемых URL</h2>
@@ -70,8 +71,37 @@
                     <td>Другие коды (Information/Custom)</td>
                     <td>{{ status_summary['other'] }}</td>
                 </tr>
+                <tr>
             </tbody>
         </table>
+        <!--Топ 10 тяжелых запросов-->
+        <h2>Топ 10 тяжелых запросов:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Место</th>
+                    <th>Размер</th>
+                    <th>Запрос</th>
+                    <th>IP</th>
+                    <th>Статус</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in heavy_list %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ row['size'] }}</td>
+                        <td>{{ row['request'] }}</td>
+                        <td>{{ row['ip'] }}</td>
+                        <td>{{ row['status'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <!--Топ 10 тяжелых запросов-->
+        <h2>Топ 10 тяжелых запросов:</h2>
+        {{ analyzer }}
+
 
     </div>
 

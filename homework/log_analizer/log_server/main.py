@@ -2,7 +2,7 @@ import jinja2
 import sys
 import os
 from collections import Counter, deque
-from utils import LogEntry, log_parser, timing,HEAVY_REQUEST
+from utils import LogEntry, log_parser, timing, HEAVY_REQUEST
 
 class LogAnalyzer:
     # для хранения времени анализа (устанавливается @timing)
