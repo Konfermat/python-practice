@@ -24,10 +24,20 @@ class CategoryAnalyzer(Process):
     def run(self):
         logger.info(f'Процесс Анализатор запущен и ожидает задачи в очереди')
         while True:
-            task_data = self.input_queue.get() # блокирующее ожидание
-            # task_data (row_index, task_desc)
-            if task_data is None:
-                logger.info('Получен сигнал о завершении. Процесс Анализатор завершает работу.')
-                break
+            try:
+                task_data = self.input_queue.get() # блокирующее ожидание
+                # task_data (row_index, task_desc)
+                if task_data is None:
+                    logger.info('Получен сигнал о завершении. Процесс Анализатор завершает работу.')
+                    break
+                row_index, task_desc = task_data
+                logger.info(
+                    f'Задача "{task_desc}" (строка {row_index}) передача в Процесс для анализа'
+                )
+                new_category = self.analyze_task(task_desc)
+                logger.info(f'Процесс определил Категорию для задачи "{task_desc}": {new_category}')
+                self.output_queue.put((row_index, new_category))
+            except Exception as e:
+                logger.error(f'Ошибка в Процесе-Анализаторе: {e}')
 
 
