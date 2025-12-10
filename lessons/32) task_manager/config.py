@@ -22,10 +22,11 @@ CATEGORY_KEYWORDS = {
 }
 
 import logging
-LOG_CONFIG = {
-    'level': logging.INFO,
-    'format': '%(asctime)s - %(levelname)s - %(threadName)s - %(message)s',
-    'logfile': LOG_FILE,
-    'filemode': 'a',
-}
+def setup_logging():
+    logging.basicConfig(
+        level=logging.INFO,
+        format= '%(asctime)s% - %(name) - %(levelname)s - %(threadName)s - %(message)s',
+        handlers=[logging.FileHandler(LOG_FILE, mode='a', encoding='utf-8'),
+                  logging.StreamHandler()]
+    )
 

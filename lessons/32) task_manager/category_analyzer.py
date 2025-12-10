@@ -11,6 +11,7 @@ class CategoryAnalyzer(Process):
         self.input_queue = input_queue
         self.output_queue = output_queue
         self.name = 'AnalyzerProcess'
+        self.daemon = True
 
     def analyze_task(self, task_desc: str)->str:
         task_lower = task_desc.lower()
@@ -37,6 +38,8 @@ class CategoryAnalyzer(Process):
                 new_category = self.analyze_task(task_desc)
                 logger.info(f'Процесс определил Категорию для задачи "{task_desc}": {new_category}')
                 self.output_queue.put((row_index, new_category))
+            except KeyboardInterrupt:
+                break
             except Exception as e:
                 logger.error(f'Ошибка в Процесе-Анализаторе: {e}')
 
