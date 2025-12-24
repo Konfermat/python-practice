@@ -3,3 +3,4 @@ del/
 __pycache__/
 .pytest_cache
 .idea
+python-3.13.1-docs-html
