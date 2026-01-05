@@ -44,23 +44,23 @@ server.serve_forever()
 # 1) text, image, application, audio, video
 # 2) plain, html, json, css, javascript
 
-обработка основных методов протокола
-BaseHTTPRequestHandler:
-    # запрос(request)
-    self.requestline # строка запроса
-    self.command = 'GET' POST
-    self.header = 'заголовки запроса'
-    self.rfile = 'оток для чтения запроса'
-    #Ответ(response)
-    self.wfile = 'поток для записи ответа'
-    self.send_header()
-    self.end_headers()
-    log_message()
-    send_error()
+# обработка основных методов протокола
+# BaseHTTPRequestHandler:
+#     # запрос(request)
+#     self.requestline # строка запроса
+#     self.command = 'GET' POST
+#     self.header = 'заголовки запроса'
+#     self.rfile = 'оток для чтения запроса'
+#     #Ответ(response)
+#     self.wfile = 'поток для записи ответа'
+#     self.send_header()
+#     self.end_headers()
+#     log_message()
+#     send_error()
 
-    class h(HTTPServer):
-        server_address = (host, port)
-        handler_class = 'класс обработчик'
-        serve_forever = 'запускает бесконечный цикл обработки запросов'
-        serve_close() = 'корректно закреот сервер'
+#     class h(HTTPServer):
+#         server_address = (host, port)
+#         handler_class = 'класс обработчик'
+#         serve_forever = 'запускает бесконечный цикл обработки запросов'
+#         serve_close() = 'корректно закреот сервер'
         
