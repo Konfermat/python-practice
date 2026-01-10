@@ -1,0 +1,92 @@
+-- 1) Вывести список всех групп (их названия) вместе с названиями
+-- кафедр, к которым они относятся. Отсортировать результат по
+-- названию кафедры, а затем по названию группы.
+-- select g.name as group_name, d.name as department_name
+-- from Groups as g
+-- join Departments as d on g.id = d.id
+-- order by group_name ASC, department_name asc;
+--
+-- 2) Вывести список всех лекций (аудитория и ID) вместе с названием
+-- предмета и фамилией преподавателя, который их ведет.
+-- Отсортировать по названию предмета.
+-- select l.LectureRoom as lecture_room, 
+-- l.id as lecture_id, 
+-- s.name as subject_name,
+-- t.Surname as teacher_surname
+-- from Lectures as l
+-- join Subjects as s on s.id = l.SubjectId
+-- join Teachers as t on t.id = s.id
+-- order by subject_name;
+--
+-- 3) Найти всех кураторов, которые не прикреплены ни к одной группе.
+-- Вывести их имя и фамилию.
+-- select c.name as curator_name, c.surname as curator_surname
+-- from Curators as c
+-- join GroupsCurators as gc on gc.id = c.id
+-- where gc.curatorid != c.id
+-- 
+-- 4) Вывести полную информацию о группах: название группы, год
+-- обучения, название кафедры и название факультета, к которому
+-- относится кафедра.
+-- select g.name as group_name, 
+-- g.year as year_of_study, 
+-- d.name as department_name, 
+-- f.name as faculty_name
+-- from Groups as g
+-- join Departments as d on d.id = g.id
+-- join Faculties as f on f.id = g.id
+-- group by f.name;
+--
+-- 5) Вывести названия всех групп, которые относятся к кафедрам с
+-- финансированием больше 170 000. Показать название группы и
+-- финансирование ее кафедры.
+-- select g.name as group_name, d.financing as department_financing
+-- from Groups as g
+-- join Departments as d on d.id = g.id
+-- where d.Financing > 170000;
+--
+-- 6) Для каждого факультета посчитать общее количество кафедр на
+-- нем. Вывести название факультета и количество кафедр.
+-- Отсортировать по убыванию количества кафедр.
+-- select f.name as faculty_name,
+-- 	count(d.FacultyId) as department_amount
+-- from Faculties as f
+-- join Departments as d on f.id = d.id
+-- group by f.name
+-- order by department_amount;
+--
+-- 7) Вывести имена и фамилии всех кураторов и названия групп, за
+-- которые они отвечают. Убедитесь, что отображаются все кураторы,
+-- даже если у них нет групп (и наоборот, но это маловероятно по
+-- структуре данных).
+-- select c.name as curator_name,
+-- 	c.surname as curator_surname,
+-- 	g.name as group_name
+-- from curators as c
+-- join groups as g on g.id = c.id
+-- group by g.name;
+--
+-- 8) Вывести расписание для группы 'CS-101': список всех лекций
+-- (аудитория), которые она посещает, с указанием названия предмета и
+-- времени (предположим, время - это Lectures.Id как порядковый номер).
+-- Отсортировать по времени (Id лекции).
+-- select l.id as serial_number(time),
+-- 	g.name as group_name,
+-- 	l.LectureRoom as lecture_room,
+-- 	s.name as subject_name
+-- from Groups as g
+-- join Lectures as l on l.id = g.id
+-- join Subjects as s on s.id = g.id
+-- where g.name = 'CS-101'
+-- order by l.id
+--
+-- 9) Найти преподавателя с самой высокой зарплатой. Вывести его имя,
+-- фамилию, зарплату и перечень названий всех предметов, которые он
+-- ведет.
+-- select t.name as teacher_name,
+-- 	t.surname as teacher_surname,
+-- 	max(t.salary) as teacher_salary,
+-- 	s.name as subject_name
+-- from Teachers as t
+-- join Subjects as s on s.id = t.id;
+
