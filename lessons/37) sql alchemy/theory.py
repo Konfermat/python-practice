@@ -6,9 +6,8 @@ from enum import unique
 from tkinter.constants import CASCADE
 
 #import sqlalchemy
-from sqlalchemy import create_engine, String, Integer, ForeignKey, Column, Table, select
+from sqlalchemy import create_engine, String, Integer, ForeignKey, Column, Table, select, DateTime  
 from sqlalchemy.orm import DeclarativeBase,  Mapped, mapped_column, relationship, Session
-
 
 # int - Integer
 # str - String(length)
