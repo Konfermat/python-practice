@@ -1,0 +1,22 @@
+pip install django
+(порядок написания)
+MVC - MVT (model view template)
+Model - БД
+forms.py
+View - обработка запросов
+urls.py
+Template представления (шаблоны)
+django-admin startproject blog
+или в блог через cd
+blog это проект (все выполняем из этой папки)
+python manage.py # все основные комагды будут начинаться так
+python manage.py startapp post # создает приложение внутри проекта папка post появится
+ПЕРВЫМ ДЕЛОМ ЗАРЕГАТЬ В settings.py в INSTALLED_APPS путем добавления ключа 'post'(в нашем случае)
+и статик и темплейтс можно хранить в корне где manage.py или в каждом приложении отдельно
+
+python manage.py makemigrations --создаст файлы миграции перед создание админки
+python manage.py migrate
+python manage.py createsuperuser # создание пользователя с правами админа
+python manage.py runserver # создание сервера
+
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Трекер тренировок</title>
+</head>
+<body>
+    <h1>Трекер повторений</h1>
+
+    <form method="post">
+        <label>
+            Количество повторений:
+            <input type="number" name="reps" min="0" required>
+        </label>
+        <button type="submit">Добавить</button>
+    </form>
+
+    <h2>Записи (новые сверху)</h2>
+    {% if workouts %}
+        <ul>
+        {% for w in workouts %}
+            <li>
+				{% set tmp = w.date %}
+                {{ w.reps }} повторений — {{ tmp.strftime('%H:%M:%S %d-%m-%Y') }} <br>
+				{{ dt2 }}
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Пока нет записей.</p>
+    {% endif %}
+
+    <h3>Всего повторений за всё время: {{ total_reps }}</h3>
+</body>
+</html>

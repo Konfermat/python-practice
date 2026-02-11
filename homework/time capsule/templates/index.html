@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Цифровая Капсула Времени</title>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: Arial; max-width: 800px; margin: auto; }
+        .capsule { border: 1px solid #ccc; margin: 10px 0; padding: 15px; border-radius: 8px; }
+        .locked { background: #ffe; }
+        .unlocked { background: #efe; }
+        .create-btn { background: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 18px; }
+    </style>
+</head>
+<body>
+    <h1>Капсулы Времени</h1>
+    <a href="/create" class="create-btn">Создать новую капсулу</a>
+    {% for msg in messages %}
+    <div class="capsule {% if msg.unlock_date > now %}locked{% else %}unlocked{% endif %}">
+        <strong>Автор: {{ msg.author }}</strong>
+        {% if msg.unlock_date > now %}
+            <p>Капсула заблокирована. Будет открыта: {{ msg.unlock_date.strftime('%Y-%m-%d %H:%M') }}</p>
+        {% else %}
+            <p>{{ msg.content }}</p>
+        {% endif %}
+    </div>
+    {% endfor %}
+    {% if not messages %}
+    <p>Пока нет капсул.</p>
+    {% endif %}
+    <script>
+        const now = new Date();
+    </script>
+</body>
+</html>

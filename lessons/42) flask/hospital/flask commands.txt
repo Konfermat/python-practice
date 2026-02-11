@@ -1,0 +1,6 @@
+flask run -- запускает  сервер
+$env:FLASK_APP="run.py" -- добавляет точку входа в перемеенную окружениея
+flask db init -- инициализация миграций
+flask db migrate -m 'initial database' --создание скрипта миграций
+flask db upgrade -- сохранить изменения
+

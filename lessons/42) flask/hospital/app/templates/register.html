@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Регистрация{% endblock %}
+{% block content %}
+    <h2>Регистрация</h2>
+    <form action="POST">
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.email }}<br>
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password }}<br>
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password }}<br>
+        </p>
+        <p>
+            {{ form.confirm_password.label }}<br>
+            {{ form.confirm_password }}<br>
+        </p>
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name }}<br>
+        </p>
+        <p>
+            {{ form.role.label }}<br>
+            {{ form.role }}<br>
+        </p>
+        <p>
+            {{ form.specialization.label }}<br>
+            {{ form.specialization }}<br>
+        </p>
+        <p>
+            {{ form.submit }}
+        </p>
+    </form>
+{% endblock %}
