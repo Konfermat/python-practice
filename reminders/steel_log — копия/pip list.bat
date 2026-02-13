@@ -1,7 +1,0 @@
-"../../.venv/Scripts/python.exe" -m pip list
-pause
-
-
-
-
-

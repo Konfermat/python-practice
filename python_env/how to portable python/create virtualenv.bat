@@ -1,1 +1,0 @@
-"python-3.14.2-embed-amd64/python.exe" -m virtualenv "testing python-3.14.2-embed-amd64/.venv"
