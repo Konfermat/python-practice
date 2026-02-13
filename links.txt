@@ -1,1 +1,4 @@
-"../../.tools/PortableGit/bin/git.exe"
+&"../../.tools/PortableGit/bin/git.exe"
+
+how to wrestle a Lenny link
+https://share.google/aimode/2uPsYQbDmEUJnu0BA
