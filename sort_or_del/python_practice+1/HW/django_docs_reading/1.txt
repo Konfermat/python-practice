@@ -1,0 +1,51 @@
+Абстрактный слой "models" предназначен для создания базы данных
+класс наследуемый от "model" будет преставлять собой таблицу поля которых будут
+представлять поля базы данных. Каждый класс это отдельная таблица бызы данных.
+Каждое поле в вашей модели должно быть соответствующим экземпляром Field.
+Django использует типы классов полей для определения нескольких вещей:
+* тип столбца (INTEGER, VARCHAR etc)
+*(хз) HTML-код по умолчанию widget, используемый при визуализации поля формы 
+    (например, <input type = "text">, <select>).
+*(хз) Минимальные требования проверки, используемые в админке Django и в 
+автоматически сгенерированных формах и другие.
+Создавая поля не используйте слова которые могут конфликтовать с models API,
+такие как: clean, save, delete.
+
+
+The "model" layer
+It's an abstraction layer for structuring and manipulating the data of your web aplication.
+A model is a single definitive source of information about your data.
+Generaly, each model maps to single database table.
+
+* Each model is a python class that sublcasses django.db.models.model
+* Each attribute of the model represents a database field.
+* Wiht all of this Django gives you an automaticlly-generated database accesss
+
+Quick example:
+from django.db import models
+class Person(models.Model):
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+
+first_name and last_name are fields of the model. Each field is specified as a class
+attribute, and each attribute maps to a database column.
+
+Once you have defined your models, you need to tell Django you're going to use those
+models.
+Do this by editing your settings file and changing the INSTALLIED_APPS setting to add
+the name of the module that contains your models.python.python
+INSTALLED_APPS = [
+    # ...
+    "myapp",
+    # ...
+]
+=====================================================================================
+QuerySets нужен для заполнения базы данных
+
+QuerySets
+Once you've created your data models, Django automaticly gives you a 
+database-abstraction API that let's you create, retrive, update, and delete objects.
+
+
+
+=====================================================================================

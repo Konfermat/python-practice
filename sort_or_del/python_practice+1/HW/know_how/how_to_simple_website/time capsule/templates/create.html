@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Создать Капсулу</title>
+    <meta charset="utf-8">
+    <style> body { font-family: Arial; max-width: 600px; margin: auto; } input, textarea { width: 100%; padding: 10px; margin: 10px 0; } button { background: #28a745; color: white; padding: 15px; border: none; width: 100%; font-size: 18px; } </style>
+</head>
+<body>
+    <h1>Запечатать Капсулу</h1>
+    <form method="POST" action="/create">
+        <label>Имя автора:</label>
+        <input type="text" name="author" maxlength="30" required>
+        
+        <label>Текст послания:</label>
+        <textarea name="content" maxlength="100" rows="5" required></textarea>
+        
+        <label>Дата открытия:</label>
+        <input type="date" name="unlock_date" required>
+        
+        <button type="submit">Запечатать капсулу</button>
+    </form>
+    <a href="/">← На главную</a>
+</body>
+</html>

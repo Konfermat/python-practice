@@ -1,0 +1,9 @@
+https://django.fun/docs/django/5.2/#how-the-documentation-is-organized
+https://django.fun/docs/django/5.2/topics/db/models/
+https://django.fun/docs/django/5.2/ref/models/fields/
+https://django.fun/docs/django/5.2/topics/migrations/
+https://django.fun/docs/django/5.2/ref/migration-operations/
+https://django.fun/docs/django/5.2/topics/http/urls/
+https://django.fun/docs/django/5.2/topics/http/views/
+https://django.fun/docs/django/5.2/ref/templates/language/
+
