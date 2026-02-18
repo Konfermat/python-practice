@@ -1,0 +1,16 @@
+https://developer.mozilla.org/ru/docs/Learn_web_development/Extensions/Server-side/Django/development_environment
+bash:
+    mkdir test-app # создать папку проекта
+    cd ./test-app # перейти в неё
+    source "../../../../.venv_ALT/Scripts/activate" # активируй виртуальную среду
+    pip list # проверь активацию путем запроса списка команд
+    python3 -m django --version # или проверкой версии (без "3" тоже работает)
+    django-admin startproject mytestsite # создать проект django
+    cd ./mytestsite # перейти в django проект (все манипуляции делаются отсюда)
+    python3 manage.py runserver # запускаем сервер 
+    Ctrl+c # сочетание этих клавиш в консоле завершит работу сервера.
+    
+
+
+
+
