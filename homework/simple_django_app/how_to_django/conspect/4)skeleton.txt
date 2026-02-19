@@ -1,3 +1,4 @@
+https://developer.mozilla.org/ru/docs/Learn_web_development/Extensions/Server-side/Django/skeleton_website
 сначала создадим основу проекта: 
 django-admin startproject locallibrary
 cd ./locallibrary/
@@ -20,7 +21,27 @@ locallibrary/
 manage.py используется для создания поиложений, работы с базами данных и для 
     запуска отладочного сервера.
 
-далее нам будет нужно сделать приложения проекта.
-python3 manage.py startapp catalog
+далее нам будет нужно создать приложение проекта.
+    python3 manage.py startapp catalog # мы сделали приложение
     на уровне с manage.py появится папка с файлами определяющими приложение.
+регистрируем приложение ./locallibrary/settings.py
+    В INSTALLED_APPS дописываем приложение catalog следующим образом
+    INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'catalog.apps.CatalogConfig',
+]
         
+Откройте locallibrary/locallibrary/urls.py и обратите внимание на 
+    закомментированный текст, который объясняет суть происходящего.
+    Сейчас нам нужно добавить путь catalog в urlpatterns как показано ниже фразы:
+    Including another URLconf.
+    urlpatterns = [
+        path('admin/', admin.site.urls),
+        path('catalog/', include('catalog.urls')),
+    ]
+Теперь перенаправим корневой url на url/catalog/

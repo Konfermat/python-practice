@@ -1,0 +1,17 @@
+python3 manage.py runserver
+python3 manage.py makemigrations
+python3 manage.py migrate
+
+bash:
+cd ./how_to_django/test-apps/locallibrary
+source "../../../../../.venv_ALT/Scripts/activate"
+python3 manage.py makemigrations
+"../../../../../.venv_ALT/Scripts/python" manage.py makemigrations
+
+cmd:
+cd C:\My_Work_Space\Prog_tinkering\workbench\.repos\python-practice\homework\simple_django_app
+cd how_to_django\test-apps\locallibrary
+CALL "../../../../../.venv_ALT/Scripts/activate"
+python3 manage.py makemigrations
+python3 manage.py migrate
+
