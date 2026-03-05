@@ -5,6 +5,8 @@ python3 manage.py migrate
 bash:
 cd ./how_to_django/test-apps/locallibrary
 source "../../../../../.venv_ALT/Scripts/activate"
+source "../../.venv_ALT/Scripts/activate"
+
 python3 manage.py makemigrations
 "../../../../../.venv_ALT/Scripts/python" manage.py makemigrations
 
@@ -14,4 +16,5 @@ cd how_to_django\test-apps\locallibrary
 CALL "../../../../../.venv_ALT/Scripts/activate"
 python3 manage.py makemigrations
 python3 manage.py migrate
+
 

@@ -1,0 +1,5 @@
+source ../../../.venv_ALT/Scripts/activate
+python manage.py makemigration
+python manage.py migrate
+python manage.py runserver
+

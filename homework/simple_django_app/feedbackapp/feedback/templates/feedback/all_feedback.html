@@ -1,0 +1,17 @@
+<div>
+    {% if feedbacks %}
+        <h1>Все отзывы:</h1>
+        <ul>
+            {% for list in feedbacks %}
+                <li>
+                    <p><strong>{{ list.username }}</strong></p>
+                    <p>{{ list.text }}</p>
+                    <p> Дата отзыва {{ list.created_at }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h1>Отзывы отсутствуют</h1>
+    {% endif %}
+    <a href="{% url 'home' %}">На главную</a>
+</div>

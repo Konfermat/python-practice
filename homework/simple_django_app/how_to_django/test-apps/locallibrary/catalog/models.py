@@ -1,3 +1,9 @@
 from django.db import models
 
-# Create your models here.
+
+
+class MyModelName(models.Model):
+    # Fields
+    # Meta 
+    # methods
+    
