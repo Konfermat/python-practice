@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Мой гараж</h1>
+    <a href="{{ url_for('add_car') }}"><button>+ Добавить машину</button></a>
+    
+    {% if cars %}
+    <table>
+        <tr>
+            <th>Марка</th>
+            <th>Модель</th>
+            <th>Год</th>
+            <th>Топливо</th>
+            <th>Действие</th>
+        </tr>
+        {% for car in cars %}
+        <tr>
+            <td>{{ car.brand }}</td>
+            <td>{{ car.model }}</td>
+            <td>{{ car.year }}</td>
+            <td>{{ car.fuel_type }}</td>
+            <td>
+                <a href="{{ url_for('delete_car', car_id=car.id) }}" 
+                   onclick="return confirm('Удалить эту машину?')">Удалить</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>В вашем гараже пока нет машин.</p>
+    {% endif %}
+{% endblock %}

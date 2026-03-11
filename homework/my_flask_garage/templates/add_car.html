@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Добавить автомобиль</h1>
+    <form method="POST">
+        <p>
+            <label>Марка:</label><br>
+            <input type="text" name="brand" required placeholder="Напр. BMW">
+        </p>
+        <p>
+            <label>Модель:</label><br>
+            <input type="text" name="model" required placeholder="Напр. M5">
+        </p>
+        <p>
+            <label>Год выпуска:</label><br>
+            <input type="number" name="year" required min="1900" max="2026">
+        </p>
+        <p>
+            <label>Тип топлива:</label><br>
+            <select name="fuel_type">
+                <option value="Бензин">Бензин</option>
+                <option value="Дизель">Дизель</option>
+                <option value="Электро">Электро</option>
+            </select>
+        </p>
+        <button type="submit">Сохранить в гараж</button>
+    </form>
+    <br>
+    <a href="{{ url_for('dashboard') }}">Назад к списку</a>
+{% endblock %}

@@ -5,7 +5,7 @@ source "../../.venv_ALT/Scripts/activate"
 python -m pip install -r "./requirements.txt"
 
 "../../../../.tools/python-3.14.2-embed-amd64/python.exe" -m virtualenv ".venv"
-source ".venv/Scripts/activate" 
+source "./.venv/Scripts/activate"
 pip install flask flask-sqlalchemy flask-login jinja2
 pip list
 pip freeze > requirements.txt

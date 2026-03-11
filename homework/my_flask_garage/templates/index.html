@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Добро пожаловать в MyGarage! 🚗</h1>
+    <p>Это удобный сервис для учета ваших личных автомобилей.</p>
+    {% if not current_user.is_authenticated %}
+        <p><a href="{{ url_for('register') }}">Зарегистрируйтесь</a> или <a href="{{ url_for('login') }}">войдите</a>, чтобы начать управлять своим гаражом.</p>
+    {% else %}
+        <p>Рады видеть вас снова, {{ current_user.username }}! Переходите в <a href="{{ url_for('dashboard') }}">личный кабинет</a>.</p>
+    {% endif %}
+{% endblock %}

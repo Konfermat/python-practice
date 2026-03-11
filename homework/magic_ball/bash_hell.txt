@@ -1,0 +1,29 @@
+# open git-bash do path 
+# to check version
+/c/My_Work_Space/Prog_tinkering/workbench/.tools/node-v24.14.0-win-x64/node -v
+/c/My_Work_Space/Prog_tinkering/workbench/.tools/node-v24.14.0-win-x64/npm -v
+
+# check the folder path. It should end as /node_modules_global
+/c/My_Work_Space/Prog_tinkering/workbench/.tools/node-v24.14.0-win-x64/npm config get prefix
+
+# check if he located profile path
+/c/My_Work_Space/Prog_tinkering/workbench/.tools/node-v24.14.0-win-x64/npm config get userconfig
+
+# change with this command if /node_modules_global did't appear
+/c/My_Work_Space/Prog_tinkering/workbench/.tools/node-v24.14.0-win-x64/npm config set prefix "${NODE_EXE_PATH}\node_modules_global"
+/c/My_Work_Space/Prog_tinkering/workbench/.tools/node-v24.14.0-win-x64/npm config set cache "${NODE_EXE_PATH}\npm-cache"
+
+# or absolute path
+/c/My_Work_Space/Prog_tinkering/workbench/.tools/node-v24.14.0-win-x64/npm config set prefix "/c/My_Work_Space/Prog_tinkering/workbench/.tools/node-v24.14.0-win-x64/node_modules_global"
+/c/My_Work_Space/Prog_tinkering/workbench/.tools/node-v24.14.0-win-x64/npm config set cache "/c/My_Work_Space/Prog_tinkering/workbench/.tools/node-v24.14.0-win-x64/npm-cache"
+
+
+/c/My_Work_Space/Prog_tinkering/workbench/.tools/node-v24.14.0-win-x64/
+
+
+/c/My_Work_Space/Prog_tinkering/workbench/.tools/node-v24.14.0-win-x64/npm create vite@latest my-first-app -- --template react
+/c/My_Work_Space/Prog_tinkering/workbench/.tools/node-v24.14.0-win-x64/npx create-vite@latest my-first-app --template react
+
+/c/My_Work_Space/Prog_tinkering/workbench/.tools/node-v24.14.0-win-x64/npm cache clean --force
+
+/c/My_Work_Space/Prog_tinkering/workbench/.tools/node-v24.14.0-win-x64/npx create-vite@latest my-first-app -- --template react
