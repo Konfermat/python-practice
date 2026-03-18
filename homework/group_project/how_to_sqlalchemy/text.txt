@@ -1,0 +1,20 @@
+'''
+User
+    id
+    name
+    rented_books 
+    rent_limit
+
+Book
+    id
+    name
+    authors_list # содержит список авторов (Author)
+
+Author
+    id
+    name
+    books_list
+
+Примечание
+    Авто
+''' 
