@@ -1,0 +1,4 @@
+# to run hello.py
+flask --app hello run
+or 
+flask --app hello run --debug
